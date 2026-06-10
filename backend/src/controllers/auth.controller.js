@@ -33,8 +33,11 @@ export const signup = async (req, res) => {
         });
 
         if(newUser) {
-            generateToken(newUser._id, res);
-            await newUser.save();
+            // generateToken(newUser._id, res);
+            // await newUser.save();
+
+            const savedUser = await newUser.save();
+            generateToken(savedUser._id, res);
 
             res.status(201).json({
                 _id: newUser._id,
@@ -47,7 +50,14 @@ export const signup = async (req, res) => {
         }
 
     }catch (error) {
-        console.log("Error in signup controller:", error);
-        res.status(500).json({ message: "Internal server error" });
+        // console.log("Error in signup controller:", error);
+        // res.status(500).json({ message: "Internal server error" });
+
+        console.error("Error in signup controller:", error);
+        //handle race-condition: unique email constraint violation
+        if (error?.code === 11000 && (error.keyPattern?.email || error.keyValue?.email)) {
+            return res.status(409).json({ message: "Email already exists" });
+        }
+        return res.status(500).json({ message: "Internal server error"});
     }
 }
