@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import path from "path";
 import { connectDB } from "./lib/db.js";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
@@ -13,6 +14,7 @@ const PORT = ENV.PORT || 3000;
 
 app.use(express.json()); //req.body will be undefined without this middleware, because express doesn't know how to parse the incoming request body. This middleware parses incoming requests with JSON payloads and is based on body-parser.
 //app.use(express.urlencoded({ extended: true })); //This middleware parses incoming requests with URL-encoded payloads, which are typically used when submitting form data. The extended: true option allows for rich objects and arrays to be encoded into the URL-encoded format, using the qs library. If you set it to false, it will use the querystring library, which does not support nested objects.
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
