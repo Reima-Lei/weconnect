@@ -15,6 +15,7 @@ function SignUpPage() {
     fullName: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [randomImage, setRandomImage] = useState("");
   const { signup, isSigningUp } = useAuthStore();
@@ -103,6 +104,22 @@ function SignUpPage() {
                         }
                         className="input"
                         placeholder="Enter your password"
+                      />
+                    </div>
+                  </div>
+                  {/* CONFIRM PASSWORD */}
+                  <div>
+                    <label className="auth-input-label">Confirm Password</label>
+                    <div className="relative">
+                      <LockIcon className="auth-input-icon" />
+                      <input
+                        type="password"
+                        value={formData.confirmPassword}
+                        onChange={(e) =>
+                          setFormData({ ...formData, confirmPassword: e.target.value })
+                        }
+                        className="input"
+                        placeholder="Confirm your password"
                       />
                     </div>
                   </div>
