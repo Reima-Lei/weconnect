@@ -7,6 +7,7 @@ import {
   MailIcon,
   UserIcon,
   LoaderIcon,
+  UserCheck,
 } from "lucide-react";
 import { Link } from "react-router";
 
@@ -111,7 +112,7 @@ function SignUpPage() {
                   <div>
                     <label className="auth-input-label">Confirm Password</label>
                     <div className="relative">
-                      <LockIcon className="auth-input-icon" />
+                      <UserCheck className="auth-input-icon" />
                       <input
                         type="password"
                         value={formData.confirmPassword}
@@ -150,7 +151,7 @@ function SignUpPage() {
                 <img
                   src={randomImage}
                   alt="Sign up illustration"
-                  className="w-1/2 h-auto object-cover"
+                  className="w-3/4 h-auto object-cover"
                 />
               )}
               <div className="mt-6 text-center">
