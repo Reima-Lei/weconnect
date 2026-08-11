@@ -5,7 +5,7 @@ function NoConversationPlaceholder() {
     <div>
       NoConversationPlaceholder
     </div>
-  )
+  );
 }
 
-export default NoConversationPlaceholder
+export default NoConversationPlaceholder;

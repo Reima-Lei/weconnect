@@ -14,4 +14,9 @@ export const ENV = {
     CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
     ARCJET_KEY: process.env.ARCJET_KEY,
     ARCJET_ENV: process.env.ARCJET_ENV,
+
 };
+
+// console.log("Cloud Name:", ENV.CLOUDINARY_CLOUD_NAME);
+// console.log("API Key:", ENV.CLOUDINARY_API_KEY);
+// console.log("API Secret exists:", !!ENV.CLOUDINARY_API_SECRET);
