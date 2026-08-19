@@ -42,12 +42,12 @@ function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 bg-slate-900">
-      <div className="relative w-full max-w-6xl md:h-[800px] h-[600px]">
+    <div className="min-h-screen w-full flex items-center justify-center p-3 sm:p-4 bg-slate-900 overflow-y-auto">
+      <div className="relative w-full max-w-6xl md:min-h-0 md:h-[800px]">
         <BorderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row">
             {/* FORM COLUMN - LEFT SIDE */}
-            <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30">
+            <div className="md:w-1/2 p-4 sm:p-6 md:p-8 flex items-center justify-center md:border-r border-slate-600/30">
               <div className="w-full max-w-md">
                 {/* HEADING TEXT */}
                 <div className="text-center mb-8">
@@ -59,7 +59,7 @@ function SignUpPage() {
                 </div>
 
                 {/* FORM */}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   {/* FULL NAME */}
                   <div>
                     <label className="auth-input-label">Full Name</label>
