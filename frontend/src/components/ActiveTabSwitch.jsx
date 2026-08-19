@@ -15,7 +15,7 @@ function ActiveTabSwitch() {
         }`}
         >Contacts</button>
     </div>
-  )
+  );
 }
 
 export default ActiveTabSwitch;
