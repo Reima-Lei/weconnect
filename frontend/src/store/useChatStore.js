@@ -71,6 +71,7 @@ export const useChatStore = create((set, get) => ({
       image: messageData.image,
       createdAt: new Date().toISOString(),
       isOptimistic: true,
+      status: "sending",
     };
 
     // Immediately show message
@@ -84,14 +85,17 @@ export const useChatStore = create((set, get) => ({
         messageData,
       );
 
-      // Replace temporary message with real server message
       set((state) => ({
         messages: state.messages.map((msg) =>
-          msg._id === tempId ? res.data : msg,
+          msg._id === tempId
+            ? {
+                ...res.data,
+                status: "sent",
+              }
+            : msg,
         ),
       }));
     } catch (error) {
-      // Remove only the failed optimistic message
       set((state) => ({
         messages: state.messages.filter((msg) => msg._id !== tempId),
       }));
