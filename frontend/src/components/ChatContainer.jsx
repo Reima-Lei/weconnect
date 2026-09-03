@@ -15,6 +15,8 @@ function ChatContainer() {
     (state) => state.getMessagesByUserId,
   );
 
+  const { subscribeToMessages, unsubscribeFromMessages } = useChatStore();
+
   const authUser = useAuthStore((state) => state.authUser);
 
   const messageEndRef = useRef(null);
@@ -54,7 +56,10 @@ function ChatContainer() {
     if (!selectedUser?._id) return;
 
     getMessagesByUserId(selectedUser._id);
-  }, [selectedUser?._id, getMessagesByUserId]);
+    subscribeToMessages();
+
+    return () => unsubscribeFromMessages();
+  }, [selectedUser?._id, getMessagesByUserId, subscribeToMessages, unsubscribeFromMessages]);
 
   // Scroll to newest message
   useEffect(() => {
@@ -62,6 +67,8 @@ function ChatContainer() {
       behavior: "smooth",
     });
   }, [messages]);
+
+  useEffect(() => {}, []);
 
   if (!selectedUser) {
     return null;
